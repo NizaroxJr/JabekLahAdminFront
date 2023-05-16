@@ -1,0 +1,22 @@
+
+#ensaSpan{
+    font-size: 28pt;
+    color: rgb(36, 36, 124);
+    font-weight: bold;
+}
+#paySpan{
+    font-size: 28pt;
+    color: hsl(278, 100%, 21%);
+    font-weight: bold;
+}
+
+.brand{
+    position: absolute;
+    left: 45%;
+  
+    
+}
+#main-navbar{
+    padding: 30px;
+    margin-bottom: 2px;
+}

@@ -1,0 +1,162 @@
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+        section{
+            width: 100vw;
+            height: 100vh;
+        }
+        #btnLogin{
+            margin-left: 40%;
+        }
+      .background-radial-gradient {
+        background-color: hsl(218, 41%, 15%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+      }
+  
+      #radius-shape-1 {
+        height: 220px;
+        width: 220px;
+        top: -60px;
+        left: -130px;
+        background: radial-gradient(#44006b, #ad1fff);
+        overflow: hidden;
+      }
+  
+      #radius-shape-2 {
+        border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+        bottom: -60px;
+        right: -110px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(hsl(278, 100%, 21%), #ad1fff);
+        overflow: hidden;
+      }
+  
+      .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+      }
+      .logFormContainer{
+        margin-top: 7% !important;
+      }
+    </style>
+  
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-xxl-5">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            EnsaPay Administrators <br />
+            <span style="color: hsl(218, 81%, 75%)">Login Portal</span>
+          </h1>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Temporibus, expedita iusto veniam atque, magni tempora mollitia
+            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+            ab ipsum nisi dolorem modi. Quos?
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative pt-5 logFormContainer">
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+              <form #form="ngForm" (ngSubmit)="submitAdminLogInForm(form)">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="login">Log In</label>
+
+                      <input 
+                       [(ngModel)]="admin.logIn" 
+                       #LogIn="ngModel" 
+                       name="login" type="text" 
+                       id="login" placeholder="log in" 
+                       class="form-control"
+                       required 
+                       minlength="5"
+                       maxlength="24" 
+                       pattern="[A-Z1-9a-z]+"/>
+                   
+                     </div>
+
+
+                    <div *ngIf="LogIn.touched && !LogIn.valid">
+                      <div class="alert alert-warning" *ngIf="LogIn.errors.required">
+                        this field is required
+                      </div>
+                      <div class="alert alert-warning" *ngIf="LogIn.errors.pattern">
+                        invalid format for login Ex:TD240J89B5G123
+                      </div>
+                      <div class="alert alert-warning" *ngIf="LogIn.errors.minlength">
+                        Error this field has a minimum lenght of 10
+                      </div>
+
+                    </div>
+                  </div>
+                
+  
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                  <input type="password"
+                   id="password" 
+                   class="form-control" 
+                   [(ngModel)]="admin.password"  
+                   #Password="ngModel"
+                   name="password"  
+                   placeholder="password" 
+                   required 
+                   minlength="5" />
+                
+                </div>
+  
+                <div *ngIf="(Password.touched && !Password.valid)">
+                  <div class="alert alert-warning" *ngIf="Password.errors.required">
+                      this field is required
+                  </div>
+                  <div class="alert alert-warning" *ngIf="Password.errors.minlength">
+                      password must contain a minimum of 8 caracteres and numbers
+                  </div>
+                </div>
+                
+                <!-- Submit button -->
+                <button type="submit" 
+                class="btn btn-primary btn-block mb-4" 
+                id="btnLogin" 
+                
+                [disabled]="!(LogIn.valid && Password.valid)">
+                  Sign In
+                </button>
+                <div class="form-outline mb-4">
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="isLoginFailed"
+                  >
+                    Login failed: {{ errorMessage }}
+                  </div>
+                </div>
+  
+               
+              
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
