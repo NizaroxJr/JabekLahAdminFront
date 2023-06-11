@@ -1,0 +1,41 @@
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">J</button>
+    <div class="logo-text"  @fadeInOut *ngIf="collapsed">JABAKLAH</div>
+    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+      <i class="fa fa-times close-icon"></i>
+    </button>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item" >
+      <a class="sidenav-nav-link " routerLink="/admin/home" href="#home">
+          <i class="sidenav-link-icon fa fa-home"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">profile</span>
+        </a>
+        
+    </li>
+    <li class="sidenav-nav-item" >
+      <a class="sidenav-nav-link" href="#addAgentForm" routerLink="/admin/addAgent" >
+          <i class="sidenav-link-icon fa fa-user-plus" ></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">add</span>
+        </a>
+        
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" href="#listAgents" routerLink="/admin/listAgents">
+          <i class="sidenav-link-icon fa fa-list" ></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">list</span>
+        </a>
+        
+    </li>
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item">
+        <a class="sidenav-nav-link" (click)="logOutClicked()">
+          <i class="sidenav-link-icon fa fa-sign-out"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Sign Out</span>
+        </a>
+      </li>
+    </ul>
+  </ul>
+</div>

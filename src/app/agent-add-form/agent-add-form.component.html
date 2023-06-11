@@ -1,0 +1,305 @@
+<nav-bar></nav-bar>
+  <main class="main">
+    <div class="container-fluid px-1 py-0 mx-auto" style="height: 100vh;">
+          
+        <div class="row d-flex justify-content-center align-items-center h-100" style="background-color: darkgray;">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                  
+                    <div class="card">
+                        <h5 class="text-center mb-4">Fill In Agent Information Here:</h5>
+        
+                        <form class="form-card" 
+                        #AgentAddForm="ngForm"
+                         (ngSubmit)="submitAgentAddForm(AgentAddForm)"
+                         method="POST" enctype="multipart/form-data" >
+        
+        
+                            <div class="row justify-content-between text-left">
+                                <div class="form-group col-sm-6 flex-column d-flex"> 
+                                    <label class="form-control-label px-3">First name
+                                        <span class="text-danger"> *</span></label>
+        
+                                         <input type="text"
+                                         [(ngModel)]="agent.firstName"
+                                         #FirstName="ngModel"
+                                          id="fname" 
+                                          name="fname"
+                                           placeholder="Enter your first name" 
+                                           required 
+                                           pattern="[a-zA-Z]+"> 
+                                        </div>
+        
+                                       
+                                <div class="form-group col-sm-6 flex-column d-flex"> 
+                                    <label class="form-control-label px-3">Last name
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                        <input type="text" 
+                                        [(ngModel)]="agent.lastName"
+                                        #LastName="ngModel"
+                                        id="lname" 
+                                        name="lname" 
+                                        placeholder="Enter your last name" 
+                                        required
+                                        pattern="[a-zA-Z]+"> </div>
+                                        <div *ngIf="(FirstName.touched && !FirstName.valid)">
+                                            <div class="alert alert-danger" *ngIf="(FirstName.errors && FirstName.errors.required)"> first name Field is required</div>
+                                            <div class="alert alert-danger"*ngIf="(FirstName.errors && FirstName.errors.pattern)" > Invalid Format for first name</div>
+                                           
+                                        </div>
+                                        <div *ngIf="(LastName.touched && !LastName.valid) ">
+                                           
+                                            <div class="alert alert-danger" *ngIf="(LastName.errors && LastName.errors.required)"> last name Field is required</div>
+                                            <div class="alert alert-danger"*ngIf="(LastName.errors && LastName.errors.pattern)" > Invalid Format for last name</div>
+                                        </div>
+                            </div>
+        
+                            <div class="row justify-content-between text-left">
+        
+                                <div class="form-group col-sm-6 flex-column d-flex"> 
+        
+                                    <label class="form-control-label px-3">identity justification
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                     
+                                            <select id="Id_identification_type" 
+                                            [(ngModel)]="agent.identityJustification"
+                                            #IdType="ngModel"
+                                            name="Id_identification_type"
+                                            required
+                                             >
+                                                <option *ngFor="let IdentType of IdentTypes" >{{IdentType}}</option>
+                                            </select>
+                                </div>
+                             
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                     <label class="form-control-label px-3">Identity card number
+                                         <span class="text-danger" > *</span></label> 
+        
+                                         <input type="text"
+                                         [(ngModel)]="agent.identityCardNumber"
+                                         name="Id_number" 
+                                         #IdCardNumber="ngModel"
+                                         [disabled]="!(IdType.value==='C.I.N')"
+                                         id="Id_number" 
+                                         placeholder="Ex: DC234556"
+                                         pattern="[A-Z0-9]+"
+                                         minlength="7"
+                                         required>
+                                         </div>
+        
+                                         <div *ngIf="IdCardNumber.touched && !IdCardNumber.valid">
+                                                <div class="alert alert-danger" *ngIf="(IdCardNumber.errors && IdCardNumber.errors.pattern)">
+                                                    Incorrect Id Number Format
+                                                </div>
+                                                <div class="alert alert-danger"  *ngIf="(IdCardNumber.errors && IdCardNumber.errors.minlength)">
+                                                    Erreur: Identity card number must be > 7 
+                                                </div>
+                                        </div>  
+                                        <div *ngIf="(IdType.touched)">
+                                           
+                                            <div class="alert alert-danger" *ngIf="(IdType.errors && IdType.errors.required)"> please specify identity justification file type</div>
+                                           
+                                        </div>
+                            </div>
+        
+                            <div class="row justify-content-between text-left">
+        
+                                <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                     <label class="form-control-label px-3">Date of Birth
+                                         <span class="text-danger"> *</span></label> 
+                                         
+                                         <input type="date"
+                                         [(ngModel)]="agent.dateOfBirth"
+                                         #DateOfBirth="ngModel" 
+                                         id="DateOfBirth" 
+                                         name="DateOfBirth" 
+                                         placeholder=""
+                                         required>
+                                 </div>
+        
+                                 <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                    <label class="form-control-label px-3">Adress
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                        <input type="text"
+                                        [(ngModel)]="agent.homeAddress"
+                                        #AgentAdress="ngModel" 
+                                        id="Agentadress" 
+                                        name="AgentAdress" 
+                                        placeholder="Home address"
+                                        required>
+                                </div>
+                                <div *ngIf="(DateOfBirth.touched && !DateOfBirth.valid)">
+                                    <div class="alert alert-danger" *ngIf="(DateOfBirth.errors && DateOfBirth.errors.required)"> date of birth Field is required</div>
+                                   
+                                   
+                                </div>
+                                <div *ngIf="(AgentAdress.touched && !AgentAdress.valid)">
+                                   
+                                    <div class="alert alert-danger" *ngIf="(AgentAdress.errors&& AgentAdress.errors.required)"> Agent home adress is required</div>
+                                   
+                                </div>
+        
+                            </div>
+        
+        
+                            <div class="row justify-content-between text-left">
+        
+                                <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                     <label class="form-control-label px-3">Email Adress
+                                         <span class="text-danger"> *</span></label> 
+                                         
+                                         <input type="text"
+                                         [(ngModel)]="agent.emailAddress"
+                                         #AgentEmail="ngModel" 
+                                         id="Agentemail" 
+                                         name="AgentEmail" 
+                                         placeholder="Ex: john.doe@gmail.com"
+                                         required 
+                                         pattern="^[a-zA-Z0-9.]+@gmail.com$">
+                                 </div>
+        
+                                 <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                    <label class="form-control-label px-3">Phone Number
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                        <input type="text"
+                                        [(ngModel)]="agent.phoneNumber"
+                                        #AgentPhoneNumber="ngModel" 
+                                        id="AgentPhoneNumber" 
+                                        name="AgentPhoneNumber" 
+                                        placeholder="Ex:+2126000000"
+                                        required
+                                        pattern="[0-9+]+"
+                                        minlength="10">
+                                </div>
+        
+                                <div *ngIf="(AgentEmail.touched && !AgentEmail.valid)">
+                                    <div class="alert alert-danger" *ngIf="(AgentEmail.errors && AgentEmail.errors.required)"> email adress Field is required</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentEmail.errors &&AgentEmail.errors.pattern)" > Invalid Format for email adress</div>
+                                   
+                                </div>
+                                <div *ngIf="(AgentPhoneNumber.touched && !AgentPhoneNumber.valid) ">
+                                   
+                                    <div class="alert alert-danger" *ngIf="(AgentPhoneNumber.errors && AgentPhoneNumber.errors.required)"> phone number Field is required</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentPhoneNumber.errors && AgentPhoneNumber.errors.pattern)" > Invalid Format for phone number</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentPhoneNumber.errors && AgentPhoneNumber.errors.minlength)" > phone number must have at least 10 digits</div>
+        
+                                </div>
+                            </div>
+        
+        
+                            <div class="row justify-content-between text-left">
+        
+                                <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                     <label class="form-control-label px-3">Commerce Registry Serial Number
+                                         <span class="text-danger"> *</span></label> 
+                                         
+                                         <input type="text"
+                                         [(ngModel)]="agent.commerceregistrySerialNumber"
+                                         #AgentCommerceId="ngModel" 
+                                         id="AgentCommerceId" 
+                                         name="AgentCommerceId" 
+                                         placeholder="Ex: AB56NV98GT43"
+                                         required 
+                                         pattern="[a-zA-Z0-9]+">
+                                 </div>
+        
+                                 <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                    <label class="form-control-label px-3">Patent Number
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                        <input type="text"
+                                        [(ngModel)]="agent.patentNumber"
+                                        #AgentPatentNumber="ngModel" 
+                                        id="AgentPatentNumber" 
+                                        name="AgentPatentNumber" 
+                                        placeholder="Ex: 12539736"
+                                        required
+                                        minlength="6"
+                                        pattern="[0-9]+">
+                                </div>
+        
+                                <div *ngIf="(AgentCommerceId.touched && !AgentCommerceId.valid)">
+                                  .....  <div class="alert alert-danger" *ngIf="(AgentCommerceId.errors && AgentCommerceId.errors.required)"> commerce registry Field is required</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentCommerceId.errors && AgentCommerceId.errors.pattern)" > Invalid Format for commerce registry number</div>
+                                   
+                                </div>
+                                <div *ngIf="(AgentPatentNumber.touched && !AgentPatentNumber.valid) ">
+                                   
+                                    <div class="alert alert-danger" *ngIf="(AgentPatentNumber.errors && AgentPatentNumber.errors.required)"> patent number Field is required</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentPatentNumber.errors && AgentPatentNumber.errors.pattern)" > Invalid Format for patent number</div>
+                                    <div class="alert alert-danger"*ngIf="(AgentPatentNumber.errors && AgentPatentNumber.errors.minlength)" > patent number must have at least 6 digits</div>
+        
+                                </div>
+                            </div>
+        
+        
+                            <div class="row justify-content-between text-left">
+        
+                                <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                    <label class="form-control-label px-3">Upload Identity File
+        
+                                        <span class="text-danger"> *</span></label> 
+                                        
+                                        <input type="file" 
+                                        id="AgentAddFile" 
+                                        [(ngModel)]="file"
+                                        #AgentAddFile="ngModel"
+                                        name="AgentAddFile" 
+                                        placeholder=""
+                                        required
+                                        > 
+                                    </div>
+        
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+        
+                                        <label class="form-control-label px-3">File Description
+                
+                                            <span class="text-danger"> *</span></label> 
+                                            
+                                            <input type="text" 
+                                            [(ngModel)]="description"
+                                            #AgentFileDescription="ngModel"
+                                            id="AgentFileDescription" 
+                                            name="AgentFileDescription" 
+                                            placeholder=""> 
+                                        </div>
+                                        <div *ngIf="(AgentAddFile.touched && !AgentAddFile.valid)">
+                                            <div class="alert alert-danger" *ngIf=" (AgentAddFile.errors && AgentAddFile.errors.required)"> identity justification file is required/div>
+                                           
+                                        </div>
+                                </div>
+                            
+                            <div class="row justify-content-center">
+        
+                                <div class="form-group col-sm-6">
+                                    
+                                    <button type="submit" class="btn-block btn-primary">Add Agent</button> </div>
+        
+                            </div>
+                      
+                   
+                </div>
+            </form>
+        
+            </div>
+        </div>
+
+          
+    </div>
+        </div>
+    </div>
+  </main>
+  <!--Main layout-->
+
+

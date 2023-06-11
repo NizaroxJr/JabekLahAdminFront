@@ -1,0 +1,62 @@
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-btn {
+    margin-left: 40%;
+  }
+  
+  .background-radial-gradient {
+    background-color: hsl(200, 30%, 15%);
+    background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(200, 70%, 25%) 15%,
+      hsl(200, 70%, 20%) 35%,
+      hsl(200, 70%, 15%) 75%,
+      hsl(200, 70%, 14%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(180, 70%, 35%) 15%,
+      hsl(180, 70%, 20%) 35%,
+      hsl(180, 70%, 15%) 75%,
+      hsl(180, 70%, 14%) 80%,
+      transparent 100%
+    );
+  }
+  
+  .radius-shape-1 {
+    height: 220px;
+    width: 220px;
+    position: absolute;
+    top: -60px;
+    left: -130px;
+    background: radial-gradient(#004466, #00adff);
+    overflow: hidden;
+  }
+  
+  .radius-shape-2 {
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    position: absolute;
+    bottom: -60px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(hsl(180, 100%, 21%), #00adff);
+    overflow: hidden;
+  }
+  
+  .bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+  }
+  
+  .logFormContainer {
+    margin-top: 7% !important;
+  }
+  

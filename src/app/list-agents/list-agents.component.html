@@ -1,0 +1,46 @@
+
+<header>
+
+    <!-- Sidebar -->
+    <nav-bar></nav-bar>
+    <!-- Sidebar -->
+
+    <!-- header -->
+   
+    <!-- header -->
+
+</header>
+
+<main style="margin-top: 0px;" class="main mw-100">
+    <div class="container pt-4 mainContainer mw-100">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agent of agents" (click)="showAgentDetails(agent)">
+            <td >{{ agent.nom }}</td>
+            <td >{{ agent.prenom }}</td>
+            <td >{{ agent.email }}</td>
+            <td >{{agent.numTel}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </main>
+    
+
+  <div class="agent-details-popup" id="agentDetailsPopup">
+    <div class="agent-details-content">
+      <span class="close" (click)="closeAgentDetailsPopup()">&times;</span>
+      <h4 id="popupAgentName"></h4>
+      <p id="popupAgentDetails"></p>
+    </div>
+  </div>

@@ -1,0 +1,107 @@
+<style>
+  .new-design-block {
+    background-color: #f4f5f7;
+    padding: 50px 0;
+  }
+
+  .new-container {
+    margin: 0 auto;
+  }
+
+  .new-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .invalid-feedback {
+    color: red;
+  }
+</style>
+<div>
+<section class="new-design-block">
+  <div class="container new-container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>Welcome to Jabak Lah Admins</h1>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <img src="assets/hero-img.png" class="img-fluid animated" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card new-card">
+          <div class="card-body">
+            <form #form="ngForm" (ngSubmit)="submitAdminLogInForm(form)">
+              <div class="form-group">
+                <label for="login">Log In</label>
+                <input
+                  [(ngModel)]="admin.logIn"
+                  #LogIn="ngModel"
+                  name="login"
+                  type="text"
+                  id="login"
+                  placeholder="Enter your login"
+                  class="form-control"
+                  required
+                  minlength="5"
+                  maxlength="24"
+                  pattern="[A-Z1-9a-z]+"
+                />
+                <div *ngIf="LogIn.touched && !LogIn.valid" class="invalid-feedback">
+                  <div *ngIf="LogIn.errors.required">This field is required.</div>
+                  <div *ngIf="LogIn.errors.pattern">Invalid login format. Example: TD240J89B5G123.</div>
+                  <div *ngIf="LogIn.errors.minlength">Error! The minimum length for this field is 5.</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  [(ngModel)]="admin.password"
+                  #Password="ngModel"
+                  name="password"
+                  placeholder="Enter your password"
+                  required
+                  minlength="5"
+                />
+                <div *ngIf="Password.touched && !Password.valid" class="invalid-feedback">
+                  <div *ngIf="Password.errors.required">This field is required.</div>
+                  <div *ngIf="Password.errors.minlength">Password must contain a minimum of 5 characters.</div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                id="btnLogin"
+                [disabled]="!(LogIn.valid && Password.valid)"
+              >
+                Sign In
+              </button>
+              <div class="form-group">
+                <div class="alert alert-danger" role="alert" *ngIf="isLoginFailed">
+                  Login failed: {{ errorMessage }}
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</div>

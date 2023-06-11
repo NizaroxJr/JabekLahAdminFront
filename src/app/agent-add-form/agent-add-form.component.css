@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  
+}
+.mainContainer {
+    background-image: url("src/assets/Untitled.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav-bar {
+    display: block;
+}
+
+.main {
+    
+    background-color: gray;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.form-card {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background-color: blue; /* Replace with your desired hover color */
+    color: white; /* Replace with your desired text color */
+  }

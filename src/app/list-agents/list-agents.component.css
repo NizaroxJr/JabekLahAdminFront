@@ -1,0 +1,87 @@
+/* Styles for the table container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 70%;
+  }
+  
+  /* Styles for the table */
+  .table {
+    width: 100%;
+    background-color:transparent;
+    padding-right: 0%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styles for the table headers */
+  .table th {
+    font-weight: bold;
+
+  
+  }
+  
+  /* Styles for the table rows */
+  .table tbody tr {
+    cursor: pointer;
+    background-color:transparent;
+  }
+  .truncate {
+    max-width: 200px; /* Adjust the value as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Styles for the agent details popup */
+  .agent-details-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+  
+  .agent-details-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.25rem;
+  }
+  
+  .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  #popupAgentName {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  #popupAgentDetails {
+    font-size: 0.875rem;
+  }
+  .main{
+    
+    margin-top: 0;
+    background-image: url("../../assets/back.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
